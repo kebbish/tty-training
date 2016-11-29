@@ -44,6 +44,7 @@
 			 */
 			$scope.addItem = function () {
 				var data = $scope.textInput;
+				console.log(data);
 
 				$http.post(window.location.href+'interface/', data);
 
@@ -57,6 +58,7 @@
 				 */
 				$http.get(window.location.href+'ordersDB/orders/?filter_ordered=true').then(function(response) {
 					// Get data
+					console.log(response);
 					content = angular.fromJson(response.data);
 
 					// Prepare array for switch to avoid multiple angular digests
