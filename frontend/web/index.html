@@ -32,25 +32,20 @@
 	<!-- Your application bootstrap  -->
 	<script type="text/javascript">
 		var app = angular.module('ExampleApp', ['ngMaterial']);
-
 		app.controller("pageCtrl", function($scope, $http) {
 			/*
 			 * Modifications of this list will automatically update on the page
 			 */
 			$scope.orders = ["Bluetooth Headphones", "Christmas Gift"];
-
 			/*
 			 * Documentation https://docs.angularjs.org/api/ng/service/$http
 			 */
 			$scope.addItem = function () {
 				var data = $scope.textInput;
 				console.log(data);
-
 				$http.post(window.location.href+'interface/', data);
-
 				$scope.textInput = "";
 			}
-
 			$scope.fetchItems = function () {
 				/*
 				 * Rest interface documentation for mongodb: https://docs.mongodb.com/ecosystem/tools/http-interfaces/#simple-rest-api
@@ -60,15 +55,12 @@
 					// Get data
 					console.log(response);
 					content = angular.fromJson(response.data);
-
 					// Prepare array for switch to avoid multiple angular digests
 					var newRows = [];
-
 					// Push content
 					content.rows.forEach(function(row) {
 						newRows.push(row.name);
 					});
-
 					// Swap content
 					$scope.orders = newRows;
 				});
